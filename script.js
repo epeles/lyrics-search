@@ -9,8 +9,11 @@ const apiURL = 'https://api.lyrics.ovh';
 form.addEventListener('submit', e => {
     e.preventDefault();
     const searchTerm = search.value.trim();
-    if(!searchTerm) alert('Please type in a search team');
-    else searchSongs(searchTerm);
+    if(!searchTerm) alert('Please type in a search term');
+    else {
+        form.reset();
+        searchSongs(searchTerm);
+    }
 })
 
 //Search by song or artist
@@ -23,15 +26,16 @@ async function searchSongs(term) {
 //Show song and artist in DOM
 function showData(data) {
     result.innerHTML = `
-        <ul class="songs">${data.data.map(song => `
-            <li>
-                <span><img src="${song.album.cover_small}"></span>
-                <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-                <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+        ${data.data.map(song => `
+            <div class="songs-list">
+                <div class="img"><img class="album-cover" data-artist="${song.artist.name}" data-songtitle="${song.title}" src="${song.album.cover_medium}"></div>
+                <div><strong>${song.artist.name}</strong></div>
+                <div>${song.title}</div>
                 <audio controls><source src="${song.preview}" type="audio/mpeg"></audio>
-            </li>`)
+                
+            </div>`)
         .join('')}
-        </ul>
+        
     `;
 
     if (data.prev || data.next) {
@@ -46,7 +50,7 @@ function showData(data) {
 
 //Get prev and next page results
 async function getMoreSongs(url) {
-   const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+    const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
     const data = await res.json();
     showData(data);
 }
@@ -55,7 +59,7 @@ async function getMoreSongs(url) {
 result.addEventListener('click', e => {
     const clickedEl = e.target;
   
-    if (clickedEl.tagName === 'BUTTON') {
+    if (clickedEl.tagName === 'IMG') {
       const artist = clickedEl.getAttribute('data-artist');
       const songTitle = clickedEl.getAttribute('data-songtitle');
   
@@ -70,8 +74,10 @@ async function getLyrics(artist, songTitle) {
   
     const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
   
-    result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
-    <span>${lyrics}</span>`;
+    result.innerHTML = `
+        <h2 class="song-title-lyric"><strong>${artist}</strong> - ${songTitle}</h2>
+        <span>${lyrics}</span>
+    `;
   
     more.innerHTML = '';
 }

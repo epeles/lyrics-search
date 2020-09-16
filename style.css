@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #ffffff;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #0f7c49;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'Merriweather', serif;
     margin: 0;
 }
 
@@ -22,17 +25,18 @@ button:focus {
 }
 
 header {
-    background-image: url(./img/maxime-brugel-9yfWx6GpzKg-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url(./img/pngguru.png);
+    /* background-repeat: no-repeat; */
+    background-size: contain;
     background-position: center center;
-    color: #ffffff;
+    /* color: #ffffff; */
+    background-color: #0f7c49;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: flex-end;
     padding: 100px 0;
-    position: relative;
+    object-fit: fill;
 }
 
 header::after {
@@ -42,80 +46,89 @@ header::after {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.3);
+    /* background-color: rgba(0,0,0,0.3); */
 }
 
 header * {
     z-index: 1;
 }
 
-h1 {
-    margin: 0 0 30px;
-}
-
-form {
-    position: relative;
-    width: 500px;
+.container {
+    margin: 30px auto;
     max-width: 100%;
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-form input {
-    border: 0;
-    border-radius: 50px;
-    font-size: 16px;
-    padding: 15px 30px;
-    width: 100%;
+img.album-cover {
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+    opacity: .7;
 }
 
-form button {
+img.album-cover:hover {
+    opacity: 1;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+/* .overview {
+    background-color: rgb(35, 177, 47);
+    padding: 2rem;
     position: absolute;
-    top: 2px;
-    right: 2px;
-    background-color: skyblue;
-    border: 0;
+    max-height: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+} */
+
+.songs-list {
+    margin: 1rem;
+    width: 200px;
+    text-align: center;
+    color: whitesmoke
+}
+
+#search {
+    background-color: transparent;
+    border: 4px solid #22254b;
     border-radius: 50px;
-    color: #ffffff;
-    font-size: 16px;
-    padding: 13px 30px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin-right: 70px;
+}
+
+#search::placeholder {
+    color: whitesmoke;
+}
+
+#search:focus {
+    background-color: #0c9e7a;
+    outline: none;
+}
+
+#search:focus::placeholder {
+    color: transparent;
 }
 
 .btn {
-    background-color: #8d56fd;
+    background-color: #03380b;
     border: 0;
     border-radius: 10px;
-    color: #ffffff;
+    color: whitesmoke;
     padding: 4px 10px;
 }
 
 audio {
-    width: 200px;
-    height: 30px;
-}
-
-ul.songs {
-    list-style-type: none; /* remove o bullet icon da lista */
-    padding: 0; /*remove o espaço default da lista */
-}
-
-ul.songs li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-}
-
-.container {
-    margin: 30px auto;
-    max-width: 100%;
-    width: 600px;
-}
-
-.container h2 {
-    font-weight: 300;
-}
-
-.container p {
-    text-align: center;
+    width: 110px;
+    height: 20px;
 }
 
 .centered {
@@ -128,12 +141,18 @@ ul.songs li {
     margin: 15px;
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0; 
-    width: 100%;
-    background-color: goldenrod;
-    color: white;
+.song-title-lyric {
+    flex-basis: 100%;
     text-align: center;
+}
+
+h2.song-title-lyric {
+    text-align: left;
+    font-size: 26px;
+    border-bottom: whitesmoke 1px solid;
+}
+
+span {
+    font-size: 22px;
+    /* font-family: 'Merriweather', serif; */
 }
