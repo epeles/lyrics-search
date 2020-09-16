@@ -31,8 +31,7 @@ function showData(data) {
                 <div class="img"><img class="album-cover" data-artist="${song.artist.name}" data-songtitle="${song.title}" src="${song.album.cover_medium}"></div>
                 <div><strong>${song.artist.name}</strong></div>
                 <div>${song.title}</div>
-                <audio controls><source src="${song.preview}" type="audio/mpeg"></audio>
-                
+                <audio controls><source src="${song.preview}" type="audio/mpeg"></audio>               
             </div>`)
         .join('')}
         
