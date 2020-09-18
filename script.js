@@ -25,13 +25,15 @@ async function searchSongs(term) {
 
 //Show song and artist in DOM
 function showData(data) {
+    // console.log(searchSongs());
     result.innerHTML = `
         ${data.data.map(song => `
             <div class="songs-list">
-                <div class="img"><img class="album-cover" data-artist="${song.artist.name}" data-songtitle="${song.title}" src="${song.album.cover_medium}"></div>
+                <img class="album-cover" data-artist="${song.artist.name}" data-songtitle="${song.title}" src="${song.album.cover_medium}">
+                <audio controls><source src="${song.preview}" type="audio/mpeg"></audio>
                 <div><strong>${song.artist.name}</strong></div>
                 <div>${song.title}</div>
-                <audio controls><source src="${song.preview}" type="audio/mpeg"></audio>               
+                               
             </div>`)
         .join('')}
         

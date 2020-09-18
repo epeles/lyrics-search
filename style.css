@@ -39,15 +39,14 @@ header {
     object-fit: fill;
 }
 
-header::after {
+/* header::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    /* background-color: rgba(0,0,0,0.3); */
-}
+} */
 
 header * {
     z-index: 1;
@@ -142,4 +141,33 @@ h2.song-title-lyric {
 span {
     font-size: 22px;
     color: whitesmoke;
+}
+
+@media all and (max-width: 600px) {
+    img.album-cover {
+        width: 120px;
+        max-height: 120px;
+        margin: .5rem;
+    }
+    .songs-list {
+        width: 120px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* border: blue 1px solid; */
+    }
+    header {
+        background-image: none;
+        padding: 50px;
+    }
+    #search {
+        padding: 0.7rem 1rem;
+    }
+    /* .album-cover {
+        position: relative;
+    }
+    audio{
+        position: absolute;
+
+    } */
 }
